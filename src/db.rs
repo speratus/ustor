@@ -25,5 +25,10 @@ pub mod db {
         fn get<T>(&self, key: String) -> Option<T> {
             self.dict.get(key.as_str())
         }
+
+        fn key_exists(&self, key: String) -> bool {
+            self.dict.keys().filter(|k: &String| {k == key}).collect().len() > 0
+        }
+
     }
 }

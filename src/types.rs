@@ -7,6 +7,8 @@ pub mod types {
         fn remove(&mut self, key: String);
 
         fn get<T>(&self, key: String) -> Option<T>;
+
+        fn key_exists(&self, key: String) -> bool;
     }
 
 }
