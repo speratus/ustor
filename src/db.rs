@@ -8,22 +8,13 @@ pub mod db {
     use crate::types::types::Insertable;
 
 
-    pub trait Udb {
-        fn insert_or_update(&mut self, key: String, val: Box<dyn Insertable>) -> Option<dyn Insertable>;
-
-        fn remove(&mut self, key: String);
-
-        fn get(&self, key: String) -> Option<dyn Insertable>;
-    }
-
-
     pub struct UDbImpl {
         dict: HashMap<String, dyn Insertable>,
     }
 
     impl UDb for UDbImpl {
 
-        fn insert_or_update(&mut self, key: String, val: Box<dyn Insertable>) -> Option<dyn Insertable> {
+        fn insert_or_update<T>(&mut self, key: String, val: T) -> Option<T> {
             self.dict.insert(key, val)
         }
 
@@ -31,7 +22,7 @@ pub mod db {
             self.dict.remove(key.as_str());
         }
 
-        fn get(&self, key: String) -> Option<dyn Insertable> {
+        fn get<T>(&self, key: String) -> Option<T> {
             self.dict.get(key.as_str())
         }
     }
