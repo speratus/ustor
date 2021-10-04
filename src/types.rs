@@ -1,4 +1,3 @@
-use std::hash::Hash;
 use std::net::{SocketAddr, TcpStream};
 
 pub trait Udb {
