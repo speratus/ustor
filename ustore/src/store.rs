@@ -1,6 +1,6 @@
 use std::hash::Hash;
 
-use crate::data_types::Data;
+use crate::Data;
 
 pub trait Store<K: Eq + Hash> {
 
